@@ -8,7 +8,8 @@ The user can send Messages from here and Chat with other users logged in into th
 
 **Front-end:** HTML, CSS, and JavaScript  
 
-**Functionalities Implemented:** 
+**Functionalities Implemented:**  
+
 •User Authentication through  Web Tokens  
 
 •Cookies and Session  
