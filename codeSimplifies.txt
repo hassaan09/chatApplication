@@ -1,0 +1,38 @@
+app.post('/login',async(req,res)=>
+{
+    const {name,password} = req.body;
+    const validPass = await user.findOne({name,password});
+    console.log({name,password});
+    console.log(validPass.name)//prints name
+    console.log(validPass.toObject());
+    if(name===validPass.name&&(password===validPass.password))
+    {
+        res.status(200).json(validPass)
+    }
+    else{
+        responseError(res);
+    }
+
+})
+
+
+// save your html response in the template and then
+const template = pm.response.text();
+
+// set that template to pm.visualizer
+pm.visualizer.set(template);
+
+//Put the above code in Postman  Tests to visualize the webpage
+
+
+// app.use(express.static(path.resolve('./Views')));
+// app.get('/Global',async(req,res)=>
+// {
+//     // console.log("Hello")
+//     // res.setHeader('Content-Type', 'text/html');
+//     // res.sendFile('E:/Portfolio-Project-2/chatApplication/Views/globalChatRoom.html');
+//     return res.sendFile('E:/Portfolio-Project-2/chatApplication/Views/globalChatRoom.html');
+// })
+
+// const retrievedValue = sessionStorage.getItem("user'sEmail")
+        console.log(retrievedValue);

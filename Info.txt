@@ -1,0 +1,48 @@
+mkdir chatApplication
+//check if nodemon is installed globally
+npm list -g nodemon
+//start the package json file
+cd chatApplication
+npm init -y
+//Add this comman in package.json to start the application
+//with start command
+"start": "node index.js",
+//Import libraires to start with the dev process
+npm install express
+npm install mongoose
+//Add Folder Models to chatApplication
+//Add file users.js to chatApplication
+
+//require libraires in folders to be used in index.js
+//set up connection with database
+//?Always handle cases for 1.Connected 2.Error and 3.Disconnected
+//Logging the Errors at Each step is very important as a Back-End Developer
+//express is for building servers and axios is for talking to servers.
+//Axios is used to fetch information from the Internet/Servers
+//I'll be trying to implement the promises in a better way possible. This project will mainly focus
+//on implementing differenet functinalities in a variety of ways.
+axios.get() returns a promise which is usually an object, but can be a json if the server returns json
+
+//The findOne() function is used to find one document according to the condition. If multiple documents matches
+// the condition, then it returns the first document satisfying the condition. 
+//Donot forget to load the models folder files like users.js in terminal (node users.js) so
+//that it gets saved and loaded for the index.js file to execute;
+//Sometimes the post request or get requests won't work even if the code is right. 
+//Don't worry. Just close everything and restart.
+
+//
+Nginx does not automatically detect and apply changes to its configuration in real-time. After making changes to the Nginx configuration file, you need to 
+//cmd commands
+//nginx // to start the nginx
+//taskkill /F /IM nginx.exe // to kill the serverccc 
+
+
+//return res is a good practise if there is no further code to be executed in that function
+
+//IMP: If we are accessing something thorugh local host by address in the address bar then we
+//must give addresses in the html file accordingly.
+//IF we open an html page from file folder simply, only then we can use the relative address without
+//accessing through local host. 
+
+//Password Hashing npm install bcrypt
+//JWT Authentication npm install jsonwebtoken

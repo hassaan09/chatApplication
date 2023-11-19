@@ -1,0 +1,199 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chat App - Global Chat Room</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+            }
+
+            .container {
+                max-width: 400px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #1e1e30;
+                color: #ffffff;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: none;
+                border-radius: 5px;
+            }
+
+            select {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: none;
+                border-radius: 5px;
+                background-color: #333;
+                color: #ffffff;
+            }
+
+            button {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                background-color: #4caf50;
+                color: #ffffff;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+            a {
+                color: #4caf50;
+                text-decoration: none;
+            }
+
+            .user-list {
+                background-color: #333;
+                padding: 10px;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
+            .user-list ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .user-list ul li {
+                margin-bottom: 5px;
+            }
+
+            .chat-box {
+                background-color: #292941;
+                padding: 20px;
+                border-radius: 5px;
+                max-height: 400px;
+                overflow-y: auto;
+                margin-bottom: 10px;
+            }
+
+            .message {
+                margin-bottom: 10px;
+            }
+
+            .message span {
+                color: #4caf50;
+                margin-right: 10px;
+            }
+
+            .time {
+                color: #666;
+                font-size: 0.8em;
+            }
+
+            .message-input {
+                display: flex;
+            }
+
+            .message-input input[type="text"] {
+                flex: 1;
+                padding: 10px;
+                border: none;
+                border-radius: 5px 0 0 5px;
+            }
+
+            .message-input button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 0 5px 5px 0;
+                background-color: #4caf50;
+                color: #ffffff;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .message-input button:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+
+    <body class="global-chat-page">
+        <div class="container">
+            <h2>ChatApp 👽</h2>
+            <div class="user-list" >
+                <p id="loggedInUser" ></p>
+
+                
+            </div>
+            <div class="chat-box">
+                <div class="message">
+                    <span>Welcome </span>
+                    <p>Send a message to start Chat 😁</p>
+                    <!-- <span id="time" class="time">10:30 AM</span> -->
+                </div>
+            </div>
+            <div class="message-input">
+                <input id="message" type="text" placeholder="Type your message...">
+            </div>
+            <div id="messages"></div>
+
+            <button id="apiButton">Send</button>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const loggedUser = document.getElementById("loggedInUser")
+            // console.log(Cookies.get('user'))
+          const someText = document.cookie.split(';')
+          console.log(someText)
+            const socket = io(); // client initiated;
+            // const socket = io("http://localhost:9000");
+            const messageInput = document.getElementById("message");
+            const sendBtn = document.getElementById("apiButton");
+            const allMsgs = document.getElementById("messages");
+            const heading = document.getElementById("loggedInUser");
+
+            
+    
+            socket.on('message',(message,socketId)=>
+            {
+                    const currentDate = new Date();
+                    const hours = currentDate.getHours();
+                    const minutes = currentDate.getMinutes();
+                    const formattedTime = `${hours}:${minutes}`;
+                const heading = document.createElement('h5');
+                heading.innerText = socketId
+                const p = document.createElement('p')
+                p.innerText=message;
+                const time = document.createElement('time')
+                time.innerText=formattedTime;
+                allMsgs.appendChild(heading);
+                allMsgs.appendChild(p);
+                allMsgs.appendChild(time);
+                console.log("Server:: "+message+"socketID:"+socketId+"socketID");
+                
+                
+            })
+            sendBtn.addEventListener('click',e=>
+            {
+                const message = messageInput.value;
+                // socketId = socket.id;
+                // console.log(message+{socketId});
+                socket.emit('msg',message,);
+                messageInput.value = ''; //Clear input box after message send
+            })
+
+            
+        </script>
+        <!-- <script src="../index.js" type="module"></script> -->
+    </body>
+    </html>

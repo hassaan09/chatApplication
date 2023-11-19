@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1e1e30;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            display: flex;
+        }
+
+        .sender {
+            flex: 1;
+            padding: 20px;
+            background-color: #4caf50;
+            border-radius: 10px 0 0 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin-right: 10px;
+        }
+
+        .receiver {
+            flex: 1;
+            padding: 20px;
+            background-color: #292941;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .message {
+            margin-bottom: 10px;
+        }
+
+        .message span {
+            color: #ffffff;
+            margin-right: 10px;
+        }
+
+        .time {
+            color: #666;
+            font-size: 0.8em;
+        }
+        .message-input {
+                display: flex;
+            }
+
+            .message-input input[type="text"] {
+                flex: 1;
+                padding: 10px;
+                border: none;
+                border-radius: 5px 0 0 5px;
+            }
+
+            .message-input button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 0 5px 5px 0;
+                background-color: #4caf50;
+                color: #ffffff;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .message-input button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <div class="message-input">
+                <input id="message" type="text" placeholder="Type your message...">
+            </div>
+        </div>
+        <div class="sender">
+            <div class="message">
+                <span>Sender:</span> Hello, how are you?
+                <div class="time">12:30 PM</div>
+            </div>
+            <div class="message">
+                <span>Sender:</span> I hope everything is going well.
+                <div class="time">12:35 PM</div>
+            </div>
+        </div>
+        <div class="receiver">
+            <div class="message">
+                <span>Receiver:</span> Hi there! I'm doing fine, thanks.
+                <div class="time">12:40 PM</div>
+            </div>
+            <div class="message">
+                <span>Receiver:</span> How about you?
+                <div class="time">12:45 PM</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App - Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1e1e30;
+            color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #ffffff;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4caf50;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+
+        .user-list {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .user-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .user-list ul li {
+            margin-bottom: 5px;
+        }
+
+        .chat-box {
+            background-color: #292941;
+            padding: 20px;
+            border-radius: 5px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+        }
+
+        .message span {
+            color: #4caf50;
+            margin-right: 10px;
+        }
+
+        .time {
+            color: #666;
+            font-size: 0.8em;
+        }
+
+        .message-input {
+            display: flex;
+        }
+
+        .message-input input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .message-input button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            background-color: #4caf50;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .message-input button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body class="login-page">
+    <div class="container">
+        <h2>ChatApp 👽</h2>
+        <h5>Forgot Password? Now Enter Password</h5>
+        <form id="forgot-form2">
+            <input type="password" id="password" placeholder="Enter new Password" required>
+            <input type="text" id="code" placeholder="Enter the PIN" required>
+            <button type="Send">Send</button>
+        </form>
+    </div>
+    <script>
+        const retrievedEmail = sessionStorage.getItem("user'sEmail")
+        document.getElementById("forgot-form2").addEventListener("submit",function(event)
+        {
+            event.preventDefault();
+            const password = document.getElementById("password").value
+            const code = document.getElementById("code").value
+            fetch("http://localhost:3500/forgot2", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({retrievedEmail,password,code})
+        })
+        .then(response=>
+        {
+            if(response.status===200)
+            {
+                return response.json()
+            }
+            else if(response.status===500)
+            {
+                alert("Password couldnot be updated")
+                window.location.href = 'http://localhost:3500/Forgot'
+            }
+        })
+        .then(data=>
+        {
+           alert("Password Updated Successfully")
+            window.location.href = 'http://localhost:3500/Login';
+        })
+    })
+    </script>
+</body>
+
+</html>

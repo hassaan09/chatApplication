@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1e1e30;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #292941;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        header img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        header .user-info {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .chat-box {
+            background-color: #292941;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+            max-height: 400px;
+            position: relative;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .message img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .sender {
+            align-self: flex-end;
+            background-color: #4caf50;
+            border-radius: 10px 10px 0 10px;
+            padding: 10px;
+            max-width: 70%;
+            position: relative;
+        }
+
+        .receiver {
+            align-self: flex-start;
+            background-color: #333;
+            border-radius: 10px 10px 10px 0;
+            padding: 10px;
+            max-width: 70%;
+            position: relative;
+        }
+
+        .message span {
+            color: #ffffff;
+            margin-right: 10px;
+        }
+
+        .time {
+            color: #666;
+            font-size: 0.8em;
+        }
+
+        .message-input {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            background-color: #4caf50;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>ChatApp</h1>
+        <div class="user-info">
+            <img src="E:\Portfolio-Project-2\chatApplication\Views\js.png" alt="User Avatar">
+            <span>Logged in as: John Doe</span>
+        </div>
+    </header>
+    <div class="container">
+        <div class="chat-box">
+            <div class="message sender">
+                <div>Hi there! How are you doing?</div>
+                <div class="time">12:30 PM</div>
+            </div>
+            <div class="message receiver">
+                <img src="E:\Portfolio-Project-2\chatApplication\Views\js.png" alt="User Avatar">
+                <div><span>John:</span> I'm good, thanks! How about you?</div>
+                <div class="time">12:35 PM</div>
+            </div>
+            <div class="message sender">
+                <div>I'm doing great, thanks for asking!</div>
+                <div class="time">12:40 PM</div>
+            </div>
+            <!-- Add more messages as needed -->
+        </div>
+        <div class="message-input">
+            <input type="text" placeholder="Type your message...">
+            <button>Send</button>
+        </div>
+    </div>
+</body>
+
+</html>
